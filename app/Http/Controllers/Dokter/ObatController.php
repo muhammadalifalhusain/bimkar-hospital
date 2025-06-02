@@ -57,7 +57,6 @@ class ObatController extends Controller
             'harga' => $request->harga,
         ]);
 
-        // Redirect kembali ke halaman daftar obat
         return redirect()->route('obat.index');
     }
 

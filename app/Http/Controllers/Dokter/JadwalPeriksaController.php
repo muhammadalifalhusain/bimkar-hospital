@@ -22,7 +22,7 @@ class JadwalPeriksaController extends Controller
     public function store(Request $request) 
     { 
         $request->validate([ 
-            'hari' => 'required|in:Senin,Selasa,Rabu,Kamis,Jumat, Sabtu,Minggu', 
+            'hari' => 'required|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu', 
             'jam_mulai' => 'required|date_format:H:i', 
             'jam_selesai' => 'required|date_format:H:i|after:jam_mulai', 
         ]); 

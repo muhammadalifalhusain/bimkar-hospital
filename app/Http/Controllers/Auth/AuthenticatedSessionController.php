@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         if ($user->role === 'dokter') { 
             return redirect()->intended(route('dokter.dashboard')); 
         } elseif ($user->role === 'pasien') { 
-            return redirect()->intended(route('pasien.dashboard'))->with('status', 'user-created'); 
+            return redirect()->intended(route('pasien.dashboard')); 
         } 
  
         return redirect('/'); 
