@@ -51,19 +51,15 @@ class JadwalPeriksaController extends Controller
     { 
         $jadwalPeriksa = JadwalPeriksa::findOrFail($id); 
  
-        // Cek jika user ingin mengaktifkan 
         if (!$jadwalPeriksa->status) { 
-            // Nonaktifkan semua jadwal milik dokter tersebut 
             JadwalPeriksa::where('id_dokter', $jadwalPeriksa->id_dokter)->update(['status' => false]); 
  
-            // Aktifkan jadwal yang diklik 
             $jadwalPeriksa->status = true; 
             $jadwalPeriksa->save(); 
  
             return redirect()->back()->with('status', 'jadwal-periksa-updated'); 
         } 
  
-        // Jika sudah aktif, maka akan dinonaktifkan 
         $jadwalPeriksa->status = false; 
         $jadwalPeriksa->save(); 
  

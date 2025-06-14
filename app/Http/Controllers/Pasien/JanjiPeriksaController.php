@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Pasien;
 
-use App\Models\JanjiPeriksa;
 use App\Models\User;
-use App\Models\JadwalPeriksa;
-
-
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Models\JanjiPeriksa;
 use Illuminate\Http\Request;
+use App\Models\JadwalPeriksa;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class JanjiPeriksaController extends Controller
 {
@@ -22,8 +21,8 @@ class JanjiPeriksaController extends Controller
                 $query->where('status', true); 
             }, 
         ]) 
-            ->where('role', 'dokter') 
-            ->get(); 
+        ->where('role', 'dokter') 
+        ->get(); 
  
         return view('pasien.janji-periksa.index')->with([ 
             'no_rm' => $no_rm, 
@@ -54,5 +53,5 @@ class JanjiPeriksaController extends Controller
         ]); 
  
         return Redirect::route('pasien.janji-periksa.index')->with('status', 'janji-periksa-created'); 
-    } 
+    }
 }
